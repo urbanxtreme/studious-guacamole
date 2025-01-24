@@ -1,246 +1,299 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Welcome Back</title>
+    <script
+      src="https://kit.fontawesome.com/0250daf4f5.js"
+      crossorigin="anonymous"
+    ></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      }
 
-        body {
-            height: 100vh;
-            display: flex;
-            background: #fff;
-        }
+      body {
+        height: 100vh;
+        display: flex;
+        background: #fff;
+      }
 
-        .left-panel {
-            flex: 1;
-            background: linear-gradient(135deg, #52891D 0%, #306010 100%);
-            position: relative;
-            overflow: hidden;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-        }
+      .left-panel {
+        flex: 1;
+        background: linear-gradient(135deg, #52891d 30%, #306010 70%);
+        position: relative;
+        overflow: hidden;
+        clip-path: polygon(0 0, 100% 0, 100% 85%, 30% 85%, 0 120%, 0 0);
+      }
 
-        .icon-grid {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-            padding: 40px;
-        }
+      .icon-grid {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 40px;
+      }
 
-        .icon {
-            color: #9BE346;
-            font-size: 24px;
-            opacity: 0.3;
-        }
+      .icon {
+        color: #9be346;
+        font-size: 24px;
+        opacity: 0.3;
+      }
 
-        .trophy {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 80px;
-            color: #9BE346;
-        }
+      .trophy {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 80px;
+        color: #9be346;
+      }
 
-        .right-panel {
-            flex: 1;
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+      .right-panel {
+        flex: 1;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
 
-        .welcome-text {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
+      .welcome-text {
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        text-align: center;
+      }
 
-        .subtitle {
-            color: #666;
-            margin-bottom: 40px;
-        }
+      .subtitle {
+        color: #666;
+        margin-bottom: 40px;
+        text-align: center;
+      }
 
-        .form-container {
-            width: 100%;
-            max-width: 400px;
-        }
+      .form-container {
+        width: 100%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-        .input-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
+      .input-label {
+        display: block;
+        width: 100%;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
 
-        .input-field {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: none;
-            background: #f0f0f0;
-            border-radius: 8px;
-        }
+      .input-field {
+        width: 100%;
+        padding: 15px;
+        margin-bottom: 20px;
+        border: none;
+        background: #f0f0f0;
+        border-radius: 8px;
+      }
 
-        .forgot-password {
-            text-align: right;
-            margin-top: -15px;
-            margin-bottom: 20px;
-        }
+      .forgot-password {
+        width: 100%;
+        text-align: right;
+        margin-bottom: 20px;
+      }
 
-        .forgot-password a {
-            color: #52891D;
-            text-decoration: none;
-            font-size: 14px;
-        }
+      .forgot-password a {
+        color: #52891d;
+        text-decoration: none;
+        font-size: 14px;
+      }
 
-        .login-button {
-            width: 100%;
-            padding: 15px;
-            background: #52891D;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-bottom: 30px;
-            transition: background-color 0.2s;
-        }
+      .login-button {
+        width: 100%;
+        padding: 15px;
+        background: linear-gradient(135deg, #52891d 30%, #306010 70%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-bottom: 30px;
+        transition: background-color 0.2s;
+      }
 
-        .login-button:hover {
-            background: #457718;
-        }
+      .login-button:hover {
+        background: linear-gradient(135deg, #306010 30%, #52891d 70%);
+      }
 
-        .social-section {
-            width: 50%;
-            margin-left: auto;
-        }
+      .social-section {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
 
-        .divider-container {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
+      .divider-container {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 400px;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
 
-        .divider-line {
-            flex: 1;
-            height: 1px;
-            background: #ddd;
-        }
+      .divider-line {
+        flex: 1;
+        height: 1px;
+        background: #ddd;
+      }
 
-        .divider-text {
-            color: #666;
-            font-size: 14px;
-            white-space: nowrap;
-        }
+      .divider-text {
+        color: #666;
+        font-size: 14px;
+        white-space: nowrap;
+      }
 
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
+      .social-icons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin: 20px 0;
+      }
 
-        .social-icon {
-            width: 35px;
-            height: 35px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
+      .social-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f0f0f0;
+        color: #52891d;
+        font-size: 20px;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
 
-        .social-icon:hover {
-            transform: scale(1.1);
-        }
+      .social-icon:hover {
+        transform: scale(1.1);
+      }
 
-        .signup-container {
-            text-align: center;
-            margin-top: 20px;
-        }
+      .signup-container {
+        text-align: center;
+        margin-top: 20px;
+      }
 
-        .signup-text {
-            color: #666;
-            font-size: 14px;
-        }
+      .signup-text {
+        color: #666;
+        font-size: 14px;
+      }
 
-        .signup-link {
-            color: #52891D;
-            text-decoration: none;
-            font-weight: 500;
-        }
+      .signup-link {
+        color: #52891d;
+        text-decoration: none;
+        font-weight: 500;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="left-panel">
-        <div class="icon-grid">
-            <span class="icon">⚡</span>
-            <span class="icon">📱</span>
-            <span class="icon">👤</span>
-            <span class="icon">🌍</span>
-            <span class="icon">⭐</span>
-            <span class="icon">📚</span>
-            <span class="icon">🎮</span>
-            <span class="icon">💡</span>
-            <span class="icon">🎵</span>
-            <span class="icon">🔍</span>
-            <span class="icon">💪</span>
-            <span class="icon">🎨</span>
-            <span class="icon">🎯</span>
-            <span class="icon">📊</span>
-            <span class="icon">🔬</span>
-            <span class="icon">📝</span>
-        </div>
-        <div class="trophy">🏆</div>
+      <div class="icon-grid">
+        <span class="icon">⚡</span>
+        <span class="icon">📱</span>
+        <span class="icon">👤</span>
+        <span class="icon">🌍</span>
+        <span class="icon">⭐</span>
+        <span class="icon">📚</span>
+        <span class="icon">🎮</span>
+        <span class="icon">💡</span>
+        <span class="icon">🎵</span>
+        <span class="icon">🔍</span>
+        <span class="icon">💪</span>
+        <span class="icon">🎨</span>
+        <span class="icon">🎯</span>
+        <span class="icon">📊</span>
+        <span class="icon">🔬</span>
+        <span class="icon">📝</span>
+      </div>
+      <div class="trophy">🏆</div>
     </div>
     <div class="right-panel">
-        <h1 class="welcome-text">WELCOME BACK!!!</h1>
-        <p class="subtitle">Continue to connect expert....</p>
-        <div class="form-container">
-            <label class="input-label">Email</label>
-            <input type="email" class="input-field" placeholder="Enter your email">
-            
-            <label class="input-label">Password</label>
-            <input type="password" class="input-field" placeholder="Enter your password">
-            
-            <div class="forgot-password">
-                <a href="#">forgot password?</a>
-            </div>
-            
-            <button class="login-button">Login</button>
-            
-            <div class="social-section">
-                <div class="divider-container">
-                    <div class="divider-line"></div>
-                    <span class="divider-text">or continue with</span>
-                    <div class="divider-line"></div>
-                </div>
-                
-                <div class="social-icons">
-                    <img src="/api/placeholder/35/35" alt="Twitter" class="social-icon">
-                    <img src="/api/placeholder/35/35" alt="LinkedIn" class="social-icon">
-                    <img src="/api/placeholder/35/35" alt="GitHub" class="social-icon">
-                    <img src="/api/placeholder/35/35" alt="Google" class="social-icon">
-                </div>
-            </div>
-            
-            <div class="signup-container">
-                <span class="signup-text">Don't have an account? </span>
-                <a href="#" class="signup-link">Signup</a>
-            </div>
+      <h1 class="welcome-text">WELCOME BACK!!!</h1>
+      <p class="subtitle">Continue to connect expert....</p>
+      <div class="form-container">
+        <label class="input-label">Email</label>
+        <input
+          type="email"
+          class="input-field"
+          placeholder="Enter your email"
+        />
+
+        <label class="input-label">Password</label>
+        <input
+          type="password"
+          class="input-field"
+          placeholder="Enter your password"
+        />
+
+        <div class="forgot-password">
+          <a href="#">Forgot password?</a>
         </div>
+
+        <button class="login-button">Login</button>
+
+        <div class="social-section">
+          <div class="divider-container">
+            <div class="divider-line"></div>
+            <span class="divider-text">or continue with</span>
+            <div class="divider-line"></div>
+          </div>
+
+          <div class="social-icons">
+            <a
+              href="https://twitter.com"
+              class="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com"
+              class="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a
+              href="https://github.com"
+              class="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://www.google.com"
+              class="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-google"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="signup-container">
+          <span class="signup-text">Don't have an account? </span>
+          <a href="#" class="signup-link">Signup</a>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
