@@ -3,234 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome Back</title>
+    <title>Login-Sklarify</title>
     <script
       src="https://kit.fontawesome.com/0250daf4f5.js"
       crossorigin="anonymous"
     ></script>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      }
-
-      body {
-        height: 100vh;
-        display: flex;
-        background: #fff;
-      }
-
-      .left-panel {
-        flex: 1;
-        background: linear-gradient(135deg, #52891d 30%, #306010 70%);
-        position: relative;
-        overflow: hidden;
-        clip-path: polygon(0 0, 100% 0, 100% 85%, 30% 85%, 0 120%, 0 0);
-      }
-
-      .icon-grid {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        padding: 40px;
-      }
-
-      .icon {
-        color: #9be346;
-        font-size: 24px;
-        opacity: 0.3;
-      }
-
-      .trophy {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 80px;
-        color: #9be346;
-      }
-
-      .right-panel {
-        flex: 1;
-        padding: 40px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .welcome-text {
-        font-size: 32px;
-        font-weight: bold;
-        margin-bottom: 10px;
-        text-align: center;
-      }
-
-      .subtitle {
-        color: #666;
-        margin-bottom: 40px;
-        text-align: center;
-      }
-
-      .form-container {
-        width: 100%;
-        max-width: 400px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .input-label {
-        display: block;
-        width: 100%;
-        margin-bottom: 8px;
-        font-weight: 500;
-      }
-
-      .input-field {
-        width: 100%;
-        padding: 15px;
-        margin-bottom: 20px;
-        border: none;
-        background: #f0f0f0;
-        border-radius: 8px;
-      }
-
-      .forgot-password {
-        width: 100%;
-        text-align: right;
-        margin-bottom: 20px;
-      }
-
-      .forgot-password a {
-        color: #52891d;
-        text-decoration: none;
-        font-size: 14px;
-      }
-
-      .login-button {
-        width: 100%;
-        padding: 15px;
-        background: linear-gradient(135deg, #52891d 30%, #306010 70%);
-        color: white;
-        border: none;
-        border-radius: 8px;
-        font-size: 16px;
-        cursor: pointer;
-        margin-bottom: 30px;
-        transition: background-color 0.2s;
-      }
-
-      .login-button:hover {
-        background: linear-gradient(135deg, #306010 30%, #52891d 70%);
-      }
-
-      .social-section {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .divider-container {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        max-width: 400px;
-        gap: 8px;
-        margin-bottom: 20px;
-      }
-
-      .divider-line {
-        flex: 1;
-        height: 1px;
-        background: #ddd;
-      }
-
-      .divider-text {
-        color: #666;
-        font-size: 14px;
-        white-space: nowrap;
-      }
-
-      .social-icons {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin: 20px 0;
-      }
-
-      .social-icon {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #f0f0f0;
-        color: #52891d;
-        font-size: 20px;
-        cursor: pointer;
-        transition: transform 0.2s;
-      }
-
-      .social-icon:hover {
-        transform: scale(1.1);
-      }
-
-      .signup-container {
-        text-align: center;
-        margin-top: 20px;
-      }
-
-      .signup-text {
-        color: #666;
-        font-size: 14px;
-      }
-
-      .signup-link {
-        color: #52891d;
-        text-decoration: none;
-        font-weight: 500;
-      }
-    </style>
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <div class="left-panel">
-      <div class="icon-grid">
-        <span class="icon">⚡</span>
-        <span class="icon">📱</span>
-        <span class="icon">👤</span>
-        <span class="icon">🌍</span>
-        <span class="icon">⭐</span>
-        <span class="icon">📚</span>
-        <span class="icon">🎮</span>
-        <span class="icon">💡</span>
-        <span class="icon">🎵</span>
-        <span class="icon">🔍</span>
-        <span class="icon">💪</span>
-        <span class="icon">🎨</span>
-        <span class="icon">🎯</span>
-        <span class="icon">📊</span>
-        <span class="icon">🔬</span>
-        <span class="icon">📝</span>
+      <div class="icon-grid"></div>
+      <div class="trophy">
+        <i class="fas fa-trophy"></i>
       </div>
-      <div class="trophy">🏆</div>
     </div>
     <div class="right-panel">
       <h1 class="welcome-text">WELCOME BACK!!!</h1>
-      <p class="subtitle">Continue to connect expert....</p>
-      <div class="form-container">
+      <p class="subtitle">Continue to get back to your dashboard....</p>
+      <form id="loginForm" class="form-container">
         <label class="input-label">Email</label>
         <input
           type="email"
           class="input-field"
           placeholder="Enter your email"
+          required
         />
 
         <label class="input-label">Password</label>
@@ -238,13 +34,14 @@
           type="password"
           class="input-field"
           placeholder="Enter your password"
+          required
         />
 
         <div class="forgot-password">
           <a href="#">Forgot password?</a>
         </div>
 
-        <button class="login-button">Login</button>
+        <button type="submit" class="login-button">Login</button>
 
         <div class="social-section">
           <div class="divider-container">
@@ -293,7 +90,8 @@
           <span class="signup-text">Don't have an account? </span>
           <a href="#" class="signup-link">Signup</a>
         </div>
-      </div>
+      </form>
     </div>
+    <script src="index.js"></script>
   </body>
 </html>
