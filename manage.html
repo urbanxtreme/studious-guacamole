@@ -4,108 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Courses UI</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #f5f5f5;
-      }
-
-      .header {
-        display: flex;
-        align-items: center;
-        padding: 10px;
-        background-color: #e3f0d5;
-        color: #4f8a10;
-      }
-
-      .header .back-arrow {
-        cursor: pointer;
-        font-size: 20px;
-        margin-right: 10px;
-      }
-
-      .header h1 {
-        margin: 0;
-        font-size: 24px;
-      }
-
-      .search-bar {
-        margin: 10px auto;
-        width: 80%;
-        display: flex;
-        justify-content: center;
-      }
-
-      .search-bar input {
-        width: 100%;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #ccc;
-      }
-
-      .courses-container {
-        display: flex;
-        justify-content: center;
-        gap: 15px;
-        margin: 20px;
-      }
-
-      .course-card {
-        background-color: #98c98f;
-        border-radius: 10px;
-        padding: 15px;
-        width: 200px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
-
-      .course-card h3 {
-        margin: 0;
-        margin-bottom: 10px;
-        font-size: 18px;
-        color: #ffffff;
-        display: flex;
-        align-items: center;
-      }
-
-      .course-card h3 .edit-icon {
-        margin-right: 5px;
-      }
-
-      .course-card button {
-        width: 100%;
-        margin: 5px 0;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        background-color: #d3e6cd;
-        color: #4f8a10;
-        font-size: 16px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-      }
-
-      .course-card button .edit-icon {
-        margin-right: 5px;
-      }
-
-      .navigation {
-        text-align: center;
-        margin: 20px 0;
-      }
-
-      .navigation span {
-        font-size: 20px;
-        cursor: pointer;
-      }
-    </style>
+    <link rel="stylesheet" href="manage.css" />
   </head>
   <body>
     <div class="header">
       <span class="back-arrow">&#8592;</span>
-      <h1>Courses</h1>
+      <h1><b>MANAGE COURSES</b></h1>
     </div>
 
     <div class="search-bar">
@@ -114,30 +18,40 @@
 
     <div class="courses-container">
       <div class="course-card">
-        <h3><span class="edit-icon">&#x2714;</span>Course Name</h3>
-        <button><span class="edit-icon">&#x270E;</span>VIDEO</button>
-        <button><span class="edit-icon">&#x270E;</span>NOTES</button>
-        <button><span class="edit-icon">&#x270E;</span>TEST</button>
-        <button><span class="edit-icon">&#x270E;</span>ASSIGNMENT</button>
+        <h3 onclick="editCourseName(this)"><span class="edit-icon">🏫</span>Course Name</h3>
+        <button onclick="editSection('video', this)"><span class="edit-icon">📽️</span>VIDEO</button>
+        <button onclick="editSection('notes', this)"><span class="edit-icon">📒</span>NOTES</button>
+        <button onclick="editSection('test', this)"><span class="edit-icon">📜</span>TEST</button>
+        <button onclick="editSection('assignment', this)"><span class="edit-icon">💁</span>ASSIGNMENT</button>
       </div>
       <div class="course-card">
-        <h3><span class="edit-icon">&#x2714;</span>Course Name</h3>
-        <button><span class="edit-icon">&#x270E;</span>VIDEO</button>
-        <button><span class="edit-icon">&#x270E;</span>NOTES</button>
-        <button><span class="edit-icon">&#x270E;</span>TEST</button>
-        <button><span class="edit-icon">&#x270E;</span>ASSIGNMENT</button>
+        <h3 onclick="editCourseName(this)"><span class="edit-icon">🏫</span>Course Name</h3>
+        <button onclick="editSection('video', this)"><span class="edit-icon">📽️</span>VIDEO</button>
+        <button onclick="editSection('notes', this)"><span class="edit-icon">📒</span>NOTES</button>
+        <button onclick="editSection('test', this)"><span class="edit-icon">📜</span>TEST</button>
+        <button onclick="editSection('assignment', this)"><span class="edit-icon">💁</span>ASSIGNMENT</button>
       </div>
       <div class="course-card">
-        <h3><span class="edit-icon">&#x2714;</span>Course Name</h3>
-        <button><span class="edit-icon">&#x270E;</span>VIDEO</button>
-        <button><span class="edit-icon">&#x270E;</span>NOTES</button>
-        <button><span class="edit-icon">&#x270E;</span>TEST</button>
-        <button><span class="edit-icon">&#x270E;</span>ASSIGNMENT</button>
+        <h3 onclick="editCourseName(this)"><span class="edit-icon">🏫</span>Course Name</h3>
+        <button onclick="editSection('video', this)"><span class="edit-icon">📽️</span>VIDEO</button>
+        <button onclick="editSection('notes', this)"><span class="edit-icon">📒</span>NOTES</button>
+        <button onclick="editSection('test', this)"><span class="edit-icon">📜</span>TEST</button>
+        <button onclick="editSection('assignment', this)"><span class="edit-icon">💁</span>ASSIGNMENT</button>
       </div>
     </div>
 
-    <div class="navigation">
-      <span>&#8594;</span>
+    <!-- Modal for editing sections -->
+    <div id="edit-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <h2>Edit Section</h2>
+        <input type="file" id="file-input" accept="" />
+        <button onclick="uploadFile()">Upload</button>
+        <div id="preview"></div>
+        <button onclick="saveFile()" id="save-button" style="display: none;">Save</button>
+      </div>
     </div>
+
+    <script src="manage.js"></script>
   </body>
 </html>

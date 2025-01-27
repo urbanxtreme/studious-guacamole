@@ -1,53 +1,80 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const coursesList = document.getElementById('courses-list');
-    const addCourseButton = document.getElementById('add-course');
+let currentSection = '';
+let uploadedFile = null;
+let currentButton = null;
 
-    // Sample data
-    let courses = [
-        { name: 'Course 1', items: ['VIDEO', 'NOTES', 'TEST', 'ASSIGNMENT'] },
-        { name: 'Course 2', items: ['VIDEO', 'NOTES', 'TEST', 'ASSIGNMENT'] },
-        { name: 'Course 3', items: ['VIDEO', 'NOTES', 'TEST', 'ASSIGNMENT'] }
-    ];
+function editSection(section, button) {
+  currentSection = section;
+  currentButton = button;
+  const fileInput = document.getElementById('file-input');
+  
+  // Set accepted file types based on the section
+  if (section === 'video') {
+    fileInput.setAttribute('accept', 'video/*');
+  } else {
+    fileInput.setAttribute('accept', 'application/pdf');
+  }
 
-    function renderCourses() {
-        coursesList.innerHTML = '';
-        courses.forEach((course, index) => {
-            const courseDiv = document.createElement('div');
-            courseDiv.className = 'course';
-            courseDiv.innerHTML = `
-                <h3>${course.name}</h3>
-                <ul>
-                    ${course.items.map(item => `<li>${item}</li>`).join('')}
-                </ul>
-                <button onclick="editCourse(${index})">Edit</button>
-                <button onclick="deleteCourse(${index})">Delete</button>
-            `;
-            coursesList.appendChild(courseDiv);
-        });
+  document.getElementById('edit-modal').style.display = 'block';
+}
+
+function closeModal() {
+  document.getElementById('edit-modal').style.display = 'none';
+  document.getElementById('file-input').value = ''; // Clear file input
+  document.getElementById('preview').innerHTML = ''; // Clear preview
+  document.getElementById('save-button').style.display = 'none'; // Hide save button
+}
+
+function uploadFile() {
+  const fileInput = document.getElementById('file-input');
+  const preview = document.getElementById('preview');
+
+  if (fileInput.files.length > 0) {
+    uploadedFile = fileInput.files[0];
+    const fileURL = URL.createObjectURL(uploadedFile);
+
+    if (currentSection === 'video') {
+      preview.innerHTML = `<video controls><source src="${fileURL}" type="video/mp4">Your browser does not support the video tag.</video>`;
+    } else {
+      preview.innerHTML = `<embed src="${fileURL}" type="application/pdf" width="100%" height="400px" />`;
     }
 
-    window.editCourse = function(index) {
-        const newName = prompt('Enter new course name:', courses[index].name);
-        if (newName) {
-            courses[index].name = newName;
-            renderCourses();
-        }
-    };
+    document.getElementById('save-button').style.display = 'block'; // Show save button
+  } else {
+    alert('Please select a file to upload.');
+  }
+}
 
-    window.deleteCourse = function(index) {
-        if (confirm('Are you sure you want to delete this course?')) {
-            courses.splice(index, 1);
-            renderCourses();
-        }
-    };
+function saveFile() {
+  if (uploadedFile) {
+    const fileURL = URL.createObjectURL(uploadedFile);
+    const previewElement = currentSection === 'video' 
+      ? `<video controls><source src="${fileURL}" type="video/mp4">Your browser does not support the video tag.</video>`
+      : `<embed src="${fileURL}" type="application/pdf" width="100%" height="200px" />`;
 
-    addCourseButton.addEventListener('click', function() {
-        const courseName = prompt('Enter course name:');
-        if (courseName) {
-            courses.push({ name: courseName, items: ['VIDEO', 'NOTES', 'TEST', 'ASSIGNMENT'] });
-            renderCourses();
-        }
-    });
+    // Add preview to the main page section
+    const previewContainer = document.createElement('div');
+    previewContainer.className = 'file-preview';
+    previewContainer.innerHTML = `
+      ${previewElement}
+      <button class="delete-button" onclick="deleteFile(this)">🗑️</button>
+    `;
+    currentButton.parentNode.insertBefore(previewContainer, currentButton.nextSibling);
 
-    renderCourses();
-});
+    closeModal();
+  } else {
+    alert('No file uploaded to save.');
+  }
+}
+
+function deleteFile(button) {
+  if (confirm('Are you sure you want to delete this file?')) {
+    button.parentNode.remove(); // Remove the preview container
+  }
+}
+
+function editCourseName(courseNameElement) {
+  const newName = prompt('Enter new course name:', courseNameElement.textContent.replace('🏫', '').trim());
+  if (newName && confirm('Are you sure you want to change the course name?')) {
+    courseNameElement.innerHTML = `<span class="edit-icon">🏫</span>${newName}`;
+  }
+}
