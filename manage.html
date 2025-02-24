@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Courses UI</title>
     <link rel="stylesheet" href="manage.css" />
+    <script
+      src="https://kit.fontawesome.com/0250daf4f5.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="header">
@@ -17,6 +21,57 @@
     </div>
 
     <div class="courses-container">
+      <div class="course-card">
+        <h3 onclick="editCourseName(this)">
+          <span class="edit-icon">🏫</span>Course Name
+        </h3>
+        <button onclick="editSection('video', this)">
+          <span class="edit-icon">📽️</span>VIDEO
+        </button>
+        <button onclick="editSection('notes', this)">
+          <span class="edit-icon">📒</span>NOTES
+        </button>
+        <button onclick="editSection('test', this)">
+          <span class="edit-icon">📜</span>TEST
+        </button>
+        <button onclick="editSection('assignment', this)">
+          <span class="edit-icon">💁</span>ASSIGNMENT
+        </button>
+      </div>
+      <div class="course-card">
+        <h3 onclick="editCourseName(this)">
+          <span class="edit-icon">🏫</span>Course Name
+        </h3>
+        <button onclick="editSection('video', this)">
+          <span class="edit-icon">📽️</span>VIDEO
+        </button>
+        <button onclick="editSection('notes', this)">
+          <span class="edit-icon">📒</span>NOTES
+        </button>
+        <button onclick="editSection('test', this)">
+          <span class="edit-icon">📜</span>TEST
+        </button>
+        <button onclick="editSection('assignment', this)">
+          <span class="edit-icon">💁</span>ASSIGNMENT
+        </button>
+      </div>
+      <div class="course-card">
+        <h3 onclick="editCourseName(this)">
+          <span class="edit-icon">🏫</span>Course Name
+        </h3>
+        <button onclick="editSection('video', this)">
+          <span class="edit-icon">📽️</span>VIDEO
+        </button>
+        <button onclick="editSection('notes', this)">
+          <span class="edit-icon">📒</span>NOTES
+        </button>
+        <button onclick="editSection('test', this)">
+          <span class="edit-icon">📜</span>TEST
+        </button>
+        <button onclick="editSection('assignment', this)">
+          <span class="edit-icon">💁</span>ASSIGNMENT
+        </button>
+      </div>
       <div class="course-card">
         <h3 onclick="editCourseName(this)">
           <span class="edit-icon">🏫</span>Course Name
@@ -140,15 +195,42 @@
         <div class="footer-section">
           <h3>About Us</h3>
           <p>
-            We are committed to providing sustainable solutions and innovative
-            services to our clients worldwide, focusing on excellence and
-            environmental responsibility.
+            Education Based Platform for all the students and teachers to
+            connect and learn.
           </p>
-          <div class="social-links">
-            <a href="#" title="Facebook">f</a>
-            <a href="#" title="Twitter">t</a>
-            <a href="#" title="LinkedIn">in</a>
-            <a href="#" title="Instagram">ig</a>
+          <div class="social-icons">
+            <a
+              href="https://twitter.com"
+              class="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a
+              href="https://www.linkedin.com"
+              class="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a
+              href="https://github.com"
+              class="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://www.google.com"
+              class="social-icon"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fab fa-google"></i>
+            </a>
           </div>
         </div>
 
@@ -166,10 +248,10 @@
         <div class="footer-section">
           <h3>Contact Info</h3>
           <ul>
-            <li>123 Business Street</li>
-            <li>City, State 12345</li>
-            <li>Phone: (555) 123-4567</li>
-            <li>Email: info@example.com</li>
+            <li>ABC Company</li>
+            <li>Bangalore, Karnataka</li>
+            <li>Phone: 123456789</li>
+            <li>Email: sklarify@example.com</li>
             <li>Hours: Mon-Fri 9:00-18:00</li>
           </ul>
         </div>
